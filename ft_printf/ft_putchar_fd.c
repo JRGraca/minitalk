@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbatista <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jantunes <jantunes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 13:15:45 by jbatista          #+#    #+#             */
-/*   Updated: 2022/05/11 15:16:51 by jbatista         ###   ########.fr       */
+/*   Created: 2022/02/16 19:18:28 by jantunes          #+#    #+#             */
+/*   Updated: 2022/04/07 16:47:09 by jbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "includes/minitalk.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	ft_putchar_fd(char c, int fd)
 {
-	printf("%d\n", getpid());
-	//while (1)/
+	write(fd, &c, 1);
+	return (1);
 }
