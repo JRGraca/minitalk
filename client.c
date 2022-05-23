@@ -5,27 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbatista <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 12:02:26 by jbatista          #+#    #+#             */
-/*   Updated: 2022/05/13 12:12:22 by jbatista         ###   ########.fr       */
+/*   Created: 2022/05/23 12:18:01 by jbatista          #+#    #+#             */
+/*   Updated: 2022/05/23 13:10:17 by jbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "minitalk.h"
+
+int	power(int base, int exp)
+{
+	int	i;
+	int	ret;
+
+	i = 1;
+	ret = 1;
+	if (exp == 0)
+		return (1);
+	while (i++ <= exp)
+		ret *= base;
+	return (ret);
+}
 
 int	main(int argc, char **argv)
 {
-	int	pid;
+	int		pid;
+	char	*msg;
+	int		i;
+	int		j;
 
-	if (argc != 2)
+	i = -1;
+	j = 0;
+	if (argc != 3)
 	{
-		printf("Invalid number of arguments!");
-		exit(-1);
+		printf("Wrong number of parameters!");
+		return (0);
 	}
-	else
+	pid = atoi(argv[1]);
+	msg = argv[2];
+	while (msg[++i] != 0)
 	{
-		pid = atoi(argv[1]);
-		printf("Sending SIGUSR1 to pid %d\n", pid);
-		kill(pid, SIGUSR1);
-/*		kill(pid, SIGINT);*/
+		while (j <= 7)
+		{
+			if ((msg[i] & power(2, (7 - j))))
+				kill(pid, SIGUSR1);
+			else
+				kill(pid, SIGUSR2);
+			j++;
+		}
+		j = 0;
 	}
-}
+}	

@@ -5,40 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbatista <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 11:13:18 by jbatista          #+#    #+#             */
-/*   Updated: 2022/05/13 13:53:13 by jbatista         ###   ########.fr       */
+/*   Created: 2022/05/23 12:54:13 by jbatista          #+#    #+#             */
+/*   Updated: 2022/05/23 13:17:18 by jbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "minitalk.h"
 
 void	sig_handler(int signumber)
 {
-	if (signumber == SIGINT)
-	{
-		printf("Ctrl - C (signal %d) re \
-				ceived - thanks for using Minitalk Server!\n", signumber);
-		exit(1);
-	}
-	else if (signumber == SIGUSR1)
-	{
-		printf("USER SIGNAL (signal %d) R \
-				ECEIVED! GREAT SUCCESS!!!!1!!!\n", signumber);
-		exit(1);
-	}
-	else
-	{
-		printf("Unknown signal received (signal %d) - aborting...\n", signumber);
-		exit(-1);
-	}
+	if (signumber == SIGUSR1)
+		printf("1");
+	else if (signumber == SIGUSR2)
+		printf("0");
 }
 
 int	main(void)
 {
 	printf("PID - %d\n", getpid());
-	while (1)
+	while (1 == 1)
 	{
-		signal(SIGINT, sig_handler);
 		signal(SIGUSR1, sig_handler);
+		signal(SIGUSR2, sig_handler);
+		write(1, "\n", 1);
+		pause();
 	}
-}	
+}
