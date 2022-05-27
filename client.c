@@ -6,7 +6,7 @@
 /*   By: jbatista <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:18:01 by jbatista          #+#    #+#             */
-/*   Updated: 2022/05/23 17:05:35 by jbatista         ###   ########.fr       */
+/*   Updated: 2022/05/26 15:10:42 by jbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -46,11 +46,11 @@ int	main(int argc, char **argv)
 		while (j <= 7)
 		{
 			if ((msg[i] & power(2, (7 - j))))
-				kill(pid, SIGUSR1);
-			//	printf("1");
+//				kill(pid, SIGUSR1);
+				printf("1");
 			else
-				kill(pid, SIGUSR2);
-//				printf("0");
+//				kill(pid, SIGUSR2);
+				printf("0");
 			j++;
 			usleep(80);
 		}
