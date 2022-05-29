@@ -28,7 +28,6 @@ int	power(int base, int exp)
 int	main(int argc, char **argv)
 {
 	int		pid;
-	char	*msg;
 	int		i;
 	int		j;
 
@@ -40,17 +39,14 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	pid = atoi(argv[1]);
-	msg = argv[2];
-	while (msg[++i] != 0)
+	while (argv[2][++i] != 0)
 	{
 		while (j <= 7)
 		{
-			if ((msg[i] & power(2, (7 - j))))
-//				kill(pid, SIGUSR1);
-				printf("1");
+			if ((argv[2][i] & power(2, (7 - j))))
+				kill(pid, SIGUSR1);
 			else
-//				kill(pid, SIGUSR2);
-				printf("0");
+				kill(pid, SIGUSR2);
 			j++;
 			usleep(80);
 		}
