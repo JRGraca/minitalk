@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   minitalk_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbatista <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 17:12:12 by jbatista          #+#    #+#             */
-/*   Updated: 2022/05/30 17:30:44 by jbatista         ###   ########.fr       */
+/*   Created: 2022/05/30 15:59:34 by jbatista          #+#    #+#             */
+/*   Updated: 2022/05/30 16:02:56 by jbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
 
-int	main(int argc, char **argv)
+int	power(int base, int exp)
 {
-	int	pid;
+	int	i;
+	int	ret;
 
-	if (argc != 3)
-	{
-		ft_printf("Wrong number of parameters!");
-		return (-1);
-	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	i = 1;
+	ret = 1;
+	if (exp == 0)
+		return (1);
+	while (i++ <= exp)
+		ret *= base;
+	return (ret);
 }
-
