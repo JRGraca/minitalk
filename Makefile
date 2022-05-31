@@ -6,7 +6,7 @@
 #    By: jbatista <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:14:38 by jbatista          #+#    #+#              #
-#    Updated: 2022/05/31 15:31:43 by jbatista         ###   ########.fr        #
+#    Updated: 2022/05/31 15:40:17 by jbatista         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,22 +16,20 @@ OBJ = $(SRC:.c=.o)
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
+
+LIBFT = $(wildcard libft/*.c)
 
 all: server client
 
-server: server.o minitalk_utils.o libft minitalk_a
-	$(CC) -o $@ $< -Ilibft
+server: server.o minitalk_utils.o libft 
+	$(CC) $(CFLAGS) -o $@ $< $(LIBFT) -Ilibft
 
-client: client.o minitalk_utils.o libft minitalk_a
-	$(CC) -o $@ $< -Ilibft
+client: client.o minitalk_utils.o libft
+	$(CC) $(CFLAGS) -o $@ $< $(LIBFT) -Ilibft
 
 libft: ./libft
 	make -C libft
-
-minitalk_a:
-	ar rcs minitalk.h
-
 
 clean:
 	rm -rf $(OBJ)
