@@ -6,7 +6,7 @@
 /*   By: jbatista <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:12:12 by jbatista          #+#    #+#             */
-/*   Updated: 2022/05/31 15:29:12 by jbatista         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:44:43 by jbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -26,11 +26,11 @@ int	main(int argc, char **argv)
 		return (-1);
 	}
 	pid = ft_atoi(argv[1]);
-	while(argv[2][i])
+	while (argv[2][i])
 	{
-		while(j<8)
+		while (j < 8)
 		{
-			if(argv[2][i] & 128 >> j)
+			if (argv[2][i] & 128 >> j)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
@@ -41,4 +41,3 @@ int	main(int argc, char **argv)
 		i++;
 	}
 }
-

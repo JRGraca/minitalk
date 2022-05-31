@@ -6,7 +6,7 @@
 /*   By: jbatista <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:30:52 by jbatista          #+#    #+#             */
-/*   Updated: 2022/05/31 15:25:23 by jbatista         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:45:47 by jbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -20,13 +20,13 @@ void	sig_handler(int sign)
 		c ^= 128 >> bits;
 	else if (sign == SIGUSR1)
 		c |= 128 >> bits;
-   bits++;
-   if (bits == 8)
-   {
-   	ft_printf("%c", c);
-   	bits = 0;
-   	c = -1;
-   }
+	bits++;
+	if (bits == 8)
+	{
+		ft_printf("%c", c);
+		bits = 0;
+		c = -1;
+	}
 }
 
 int	main(void)
