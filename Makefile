@@ -6,7 +6,7 @@
 #    By: jbatista <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 16:14:38 by jbatista          #+#    #+#              #
-#    Updated: 2022/05/30 16:22:48 by jbatista         ###   ########.fr        #
+#    Updated: 2022/05/31 15:31:43 by jbatista         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,16 @@ FLAGS = -Wall -Wextra -Werror
 all: server client
 
 server: server.o minitalk_utils.o libft minitalk_a
-	$(CC) -o $@ $< -Llibft -lft
+	$(CC) -o $@ $< -Ilibft
 
 client: client.o minitalk_utils.o libft minitalk_a
-	$(CC) -o $@ $< -Llibft -lft
+	$(CC) -o $@ $< -Ilibft
 
-libft:
+libft: ./libft
 	make -C libft
 
 minitalk_a:
-
+	ar rcs minitalk.h
 
 
 clean:
